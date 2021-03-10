@@ -447,6 +447,9 @@ export BM_UPLOAD_FTP_DESTINATION=""
 # The Amazon S3 method requires that you secure an S3
 # account. See http://aws.amazon.com
 
+# S3 url
+export BM_UPLOAD_S3_HOSTS=""
+
 # The bucket to upload to. This bucket must be dedicated to backup-manager
 export BM_UPLOAD_S3_DESTINATION=""
 
