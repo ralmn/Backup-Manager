@@ -231,26 +231,12 @@ sub get_files_list_nondated(){
         exit E_INVALID;
     }
 
-    my $upload_fname = $ENV{BM_UPLOADED_ARCHIVES};
-    if ( defined $upload_fname ) {
-        # filter file list through the BM_UPLOADED_ARCHIVES database
-        foreach my $s (@{$files_searched}){
-            while (<$g_root_dir/*$s*>) {
-                my $file = $_;
-                my $cmd = "grep -q '$file' $upload_fname";
-                if ( system ("$cmd") ) {
-                    push @{$ra_files}, $file;
-                }
-            }
-        }        
-    }
-    else {
-        foreach my $s (@{$files_searched}){
-            while (<$g_root_dir/*$s*>) {
-                push @{$ra_files}, $_;
-            }
+
+    foreach my $s (@{$files_searched}){
+        while (<$g_root_dir/*$s*>) {
+            push @{$ra_files}, $_;
         }
-	}
+    }
 
 	return $ra_files;
 }
